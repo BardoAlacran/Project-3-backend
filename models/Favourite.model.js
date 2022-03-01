@@ -7,7 +7,7 @@ const favouriteSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  game: {
+  post: {
     type: Schema.Types.ObjectId,
     ref: 'Post',
     required: true,
@@ -15,4 +15,4 @@ const favouriteSchema = new Schema({
   },
 });
 
-module.exports = model('Favourite', userSchema);
+module.exports = model('Favourite', favouriteSchema);

@@ -4,7 +4,7 @@ Curiosity's Starship
 
 ## Description
 
-This repository is the REST API for the [https://github.com/BardoAlacran/Project-3-frontend](link). It allows users to generate the CRUD of the web site (main content and user).
+This repository is the REST API for the [Curiosity's Starship Frontend](https://github.com/BardoAlacran/Project-3-frontend). It allows users to generate the CRUD of the web site (main content and user).
 
 **Curiosity's Starship** is a post page starship where the user can add life tips to the rest of the net for everything, deppending on the level required for that tip (noob, mid, late, godlike).
 
@@ -43,5 +43,5 @@ npm run start
 ## Links
 
 - [Slides]()
-- [https://github.com/BardoAlacran/Project-3-frontend](link)
+- [Curiosity's Starship Frontend](https://github.com/BardoAlacran/Project-3-frontend)
 - [Deployed version]()

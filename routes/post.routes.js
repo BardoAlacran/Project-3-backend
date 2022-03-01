@@ -1,4 +1,5 @@
 const express = require('express');
+const { isAuthenticated } = require('../middleware/jwt.middleware');
 const Post = require('../models/Post.model');
 
 const router = express.Router();
@@ -27,9 +28,11 @@ router.get('/post/:id', (req, res, next) => {
     });
 });
 
-router.post('/add', (req, res, next) => {
+router.post('/add', isAuthenticated, (req, res, next) => {
   const { body, level, theme } = req.body;
-  Post.create({ isFav, body, level, theme })
+  const userId = req.payload._id;
+
+  Post.create({ user: userId, body, level, theme })
     .then(postCreated => {
       res.status(201).json(postCreated);
     })

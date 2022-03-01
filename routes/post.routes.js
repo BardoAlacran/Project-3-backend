@@ -17,7 +17,14 @@ router.get('/', (req, res, next) => {
 router.get('/post/:id', (req, res, next) => {
   const { id } = req.params;
 
-  Post.findById(id).then();
+  Post.findById(id)
+    .then(post => {
+      res.json(post);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ message: 'internal error' });
+    });
 });
 
 router.post('/add', (req, res, next) => {

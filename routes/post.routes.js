@@ -6,7 +6,9 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
   Post.find({})
+    .populate('user')
     .then(posts => {
+      console.log('posts:', posts);
       res.json(posts);
     })
     .catch(error => {

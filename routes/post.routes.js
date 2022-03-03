@@ -42,7 +42,7 @@ router.post('/add', isAuthenticated, (req, res, next) => {
     });
 });
 
-router.put('/post/:id', (req, res, next) => {
+router.put('/post/:id/edit', (req, res, next) => {
   const { id } = req.params;
   const { body, level, theme } = req.body;
 
@@ -57,7 +57,7 @@ router.put('/post/:id', (req, res, next) => {
     });
 });
 
-router.delete('/post/:id', (req, res, next) => {
+router.delete('/post/:id/delete', (req, res, next) => {
   const { id } = req.params;
 
   Post.findByIdAndDelete(id)

@@ -10,7 +10,7 @@ const postSchema = new Schema({
   date: { type: Date, default: Date.now },
   body: { type: String, required: true },
   level: { type: String, enum: ['Easy', 'Medium', 'Hard', 'Godlike'] },
-  theme: { type: String, enum: ['Gardening', 'Computing', 'Gaming', 'Science', 'curiosities'] },
+  theme: { type: String, enum: ['Gardening', 'Computing', 'Gaming', 'Science', 'Curiosities', 'Anime'] },
 });
 
 module.exports = model('Post', postSchema);

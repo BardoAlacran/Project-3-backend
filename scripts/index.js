@@ -1,3 +1,4 @@
+require('dotenv/config');
 const mongoose = require('mongoose');
 const Post = require('../models/Post.model');
 const User = require('../models/User.model');
@@ -31,7 +32,7 @@ const posts = [
 ];
 
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb+srv://BardoAlacran:Alacran95@cluster0.ao3oh.mongodb.net/curiositys-starship?retryWrites=true&w=majority  ')
+  .connect(process.env.MONGODB_URI)
   .then(async () => {
     return await Post.deleteMany({});
   })

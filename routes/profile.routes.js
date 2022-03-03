@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
-  //const userId = req.payload._id;
 
   User.findById(id)
     .then(user => {

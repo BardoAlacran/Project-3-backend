@@ -23,6 +23,7 @@ router.get('/post/:id', (req, res, next) => {
   Post.findById(id)
     .populate('user')
     .then(post => {
+      console.log(post);
       res.json(post);
     })
     .catch(error => {

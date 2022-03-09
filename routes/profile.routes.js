@@ -17,15 +17,15 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.put('/:id/edit', isAuthenticated, (req, res, next) => {
-  const { id } = req.params;
+router.put('/edit', isAuthenticated, (req, res, next) => {
+  //const { id } = req.params;
   const userId = req.payload._id;
   const { name } = req.body;
 
-  if (id !== userId) {
-    return res.status(500).json({ message: 'whatadambdoin' });
-  }
-  User.findByIdAndUpdate(id, { name: name }, { new: true })
+  // if (id !== userId) {
+  //   return res.status(500).json({ message: 'whatadambdoin' });
+  // }
+  User.findByIdAndUpdate(userId, { name: name }, { new: true })
     .then(updatedUser => {
       console.log(updatedUser);
       res.status(201).json(updatedUser);

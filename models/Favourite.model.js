@@ -11,7 +11,6 @@ const favouriteSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Post',
     required: true,
-    unique: true,
   },
 });
 favouriteSchema.index({ user: 1, post: 1 });

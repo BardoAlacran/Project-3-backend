@@ -35,7 +35,6 @@ router.get('/:id/fav', isAuthenticated, (req, res, next) => {
 router.post('/:id', isAuthenticated, (req, res, next) => {
   const userId = req.payload._id;
   const { id } = req.params;
-  console.log('req', req.payload._id);
 
   Favourite.create({ user: userId, post: id })
     .then(fav => {
@@ -48,9 +47,10 @@ router.post('/:id', isAuthenticated, (req, res, next) => {
     });
 });
 router.delete('/:id/delete', isAuthenticated, (req, res, next) => {
+  const userId = req.payload._id;
   const { id } = req.params;
 
-  Favourite.findOneAndRemove({ post: id })
+  Favourite.findOneAndRemove({ user: userId, post: id })
     .then(() => {
       res.json({ message: 'delete completed' });
     })

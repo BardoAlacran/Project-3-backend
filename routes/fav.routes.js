@@ -17,14 +17,14 @@ router.get('/favs', isAuthenticated, (req, res, next) => {
       res.status(500).json({ message: 'something happened' });
     });
 });
-
 router.get('/:id/fav', isAuthenticated, (req, res, next) => {
   const userId = req.payload._id;
-
   const { id } = req.params;
   Favourite.find({ user: userId, post: id })
     .then(fav => {
-      res.status(201).json(fav);
+      console.log(fav);
+      const [favInfo] = fav;
+      res.json(favInfo);
     })
     .catch(error => {
       console.log(error);

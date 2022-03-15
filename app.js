@@ -8,6 +8,7 @@ const authRouter = require('./routes/auth.routes');
 const postRoutes = require('./routes/post.routes');
 const profileRoutes = require('./routes/profile.routes');
 const protectedRoute = require('./routes/protected.routes');
+const favouriteRoutes = require('./routes/fav.routes');
 const { application } = require('express');
 
 const app = express();
@@ -19,6 +20,7 @@ app.use('/api/protected', isAuthenticated, protectedRoute);
 app.use('/auth', authRouter);
 app.use('/', postRoutes);
 app.use('/profile', profileRoutes);
+app.use('/favourite', favouriteRoutes);
 
 require('./error-handling')(app);
 

@@ -22,9 +22,11 @@ router.get('/:id/fav', isAuthenticated, (req, res, next) => {
   const { id } = req.params;
   Favourite.find({ user: userId, post: id })
     .then(fav => {
-      console.log(fav);
-      const [favInfo] = fav;
-      res.json(favInfo);
+      if (fav.length > 0) {
+        return res.json({ isFavorite: true });
+      }
+
+      return res.json({ isFavorite: false });
     })
     .catch(error => {
       console.log(error);

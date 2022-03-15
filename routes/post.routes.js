@@ -75,4 +75,17 @@ router.delete('/post/:id/delete', (req, res, next) => {
     });
 });
 
+router.get('/posts', isAuthenticated, (req, res, next) => {
+  const userId = req.payload._id;
+
+  Post.find({ user: userId })
+    .then(userPosts => {
+      // const [post] = userPosts;
+      res.status(201).json(userPosts);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
+
 module.exports = router;

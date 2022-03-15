@@ -18,6 +18,20 @@ router.get('/favs', isAuthenticated, (req, res, next) => {
     });
 });
 
+router.get('/:id/fav', isAuthenticated, (req, res, next) => {
+  const userId = req.payload._id;
+
+  const { id } = req.params;
+  Favourite.find({ user: userId, post: id })
+    .then(fav => {
+      res.status(201).json(fav);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ message: 'something went wrong' });
+    });
+});
+
 router.post('/:id', isAuthenticated, (req, res, next) => {
   const userId = req.payload._id;
   const { id } = req.params;

@@ -19,5 +19,16 @@ router.post('/:id', isAuthenticated, (req, res, next) => {
       res.status(500).json({ message: 'something went wrong' });
     });
 });
+router.delete('/:id/delete', isAuthenticated, (req, res, next) => {
+  const { id } = req.params;
+
+  Favourite.findOneAndRemove({ post: id })
+    .then(() => {
+      res.json({ message: 'delete completed' });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+});
 
 module.exports = router;

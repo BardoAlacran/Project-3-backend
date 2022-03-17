@@ -7,9 +7,11 @@ const router = express.Router();
 router.get('/favs', isAuthenticated, (req, res, next) => {
   const userId = req.payload._id;
   Favourite.find({ user: userId })
+
     .populate('post')
     .then(userFavs => {
       console.log(userFavs);
+
       res.status(201).json(userFavs);
     })
     .catch(error => {

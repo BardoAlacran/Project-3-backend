@@ -1,5 +1,6 @@
 const express = require('express');
 const { isAuthenticated } = require('../middleware/jwt.middleware');
+const Favourite = require('../models/Favourite.model');
 const Post = require('../models/Post.model');
 
 const router = express.Router();
@@ -63,6 +64,11 @@ router.put('/post/:id/edit', (req, res, next) => {
 
 router.delete('/post/:id/delete', (req, res, next) => {
   const { id } = req.params;
+
+  Favourite.findOneAndRemove({ post: id }).catch(error => {
+    console.log(error);
+    res.status(401).json({ message: 'the delete went wrong' });
+  });
 
   Post.findByIdAndDelete(id)
     .then(() => {

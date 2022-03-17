@@ -1,3 +1,4 @@
+const timespan = require('jsonwebtoken/lib/timespan');
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 

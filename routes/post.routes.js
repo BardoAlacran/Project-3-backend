@@ -18,6 +18,20 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.post('/filter', (req, res, next) => {
+  const { theme } = req.body;
+
+  Post.find({ theme: theme })
+    .populate('user')
+    .then(posts => {
+      res.json(posts);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ message: 'internal error' });
+    });
+});
+
 router.get('/post/:id', (req, res, next) => {
   const { id } = req.params;
 
@@ -87,6 +101,7 @@ router.get('/posts', isAuthenticated, (req, res, next) => {
   Post.find({ user: userId })
     .then(userPosts => {
       // const [post] = userPosts;
+
       res.status(201).json(userPosts);
     })
     .catch(error => {
